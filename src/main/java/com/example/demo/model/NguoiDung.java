@@ -34,6 +34,16 @@ public class NguoiDung {
 	@Column(name = "trangthai")
 	private String trangThai;
 
+	public NguoiDung(String email, String matKhau, String maVaiTro, String trangThai ){
+		this.email = email;
+		this.matKhau = matKhau;
+		this.maVaiTro = maVaiTro;
+		this.trangThai = trangThai;
+	}
+	public NguoiDung(){
+
+	}
+
 	public long getMaNguoiDung() {
 		return maNguoiDung;
 	}
@@ -105,5 +115,6 @@ public class NguoiDung {
 	public void setTrangThai(String trangThai) {
 		this.trangThai = trangThai;
 	}
+
 
 }

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"/>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
@@ -12,12 +12,16 @@
     <header></header>
     <main>
         <h1>Đăng ký</h1>
-        <form th:action="@{/staffs/staffs-save}" th:object="${staffs}" method="post" class="mt-5 mb-5">
-            <label for="">Staff ID (for login) </label>
-            <input type="text" name="username" class="form-control" > <br />
-            <label for="">Staff Name</label>
-            <input type="text" th:field="*{staffName}" class="form-control" >
+        <form th:action="@{/dangky}" th:object="${nguoidung}" method="post" class="mt-5 mb-5">
+            <label for="">Email</label>
+            <input type="text" th:field="*{email}" class="form-control" >
+            <label for="">Mật Khẩu</label>
+            <input type="password" th:field="*{matKhau}" class="form-control" >
+            <button type="submit" class="btn-outline-dark btn mt-3">Save</button>
         </form>
+        <th:block th:if="${message}">
+            <p th:text="${message}" style="color: red; font-size: medium" />
+        </th:block>
     </main>
 
 

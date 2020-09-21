@@ -1,10 +1,36 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
 </head>
 <body>
-
+<main>
+    <div class="container">
+        <h3>Đổi mật khẩu</h3>
+        <h4 class="mb-5">Để bảo mật tài khoản, vui lòng không chia sẻ mật khẩu cho người khác.</h4>
+        <form th:action="@{/1/matkhau}" th:object="${nguoidung}" method="POST">
+            <label>Depart Name</label>
+            <input class="form-control" type="text" th:field="*{matKhau}">
+            <th:block th:if="${message}">
+                <p th:text="${message}" style="color: red; font-size: medium" />
+            </th:block>
+<!--            <label>Depart Name</label>-->
+<!--            <input class="form-control" type="text" th:field="*{matKhau}" name="mkm">-->
+<!--            <label>Depart Name</label>-->
+<!--            <input class="form-control" type="text" th:field="*{matKhau}"  name="xnmkm">-->
+<!--            <th:block th:if="${message1}">-->
+<!--                <p th:text="${message1}" style="color: red; font-size: medium" />-->
+<!--            </th:block>-->
+            <button type="submit" class="btn btn-outline-dark btn-lg mb-4"> Save </button>
+        </form>
+        <th:block th:if="${message2}">
+            <p th:text="${message2}" style="color: red; font-size: medium" />
+        </th:block>
+    </div>
+</main>
 </body>
 </html>
