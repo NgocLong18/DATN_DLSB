@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Entity
-@Table(name = "giatheogio")
+@Table(name = "giatheogia")
 public class GiaTheoGio {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
