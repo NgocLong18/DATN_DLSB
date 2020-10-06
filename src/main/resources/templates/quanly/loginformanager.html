@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Document</title>
+
+</head>
+
+<body>
+<form th:action="@{/manager}" th:object="${nguoidung}" method="post">
+        <label >Email address</label>
+        <input type="text" th:field="*{email}" class="form-control">
+        <label >Password</label>
+        <input type="password" th:field="*{matKhau}" class="form-control">
+    <button type="submit" class="btn btn-primary">Sign in</button>
+</form>
+<th:block th:if="${message}">
+    <p th:text="${message}" style="color: red; font-size: medium"/>
+</th:block>
+</body>
+</html>
