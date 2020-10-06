@@ -2,9 +2,12 @@ package com.example.demo.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.springframework.stereotype.Component;
@@ -17,16 +20,24 @@ public class KhachSanBong {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name ="makhach_sanbong")
 	private long maKhach_sanbong;
-	@Column(name = "manguoidung")
-	private int maNguoiDung;
-	@Column(name = "masanbong")
-	private int maSanBong;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "manguoidung")
+	private NguoiDung NguoiDung;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn (name = "masanbong")
+	private SanBong SanBong;
+
 	@Column(name = "thoigian")
 	private String thoiGian;
+
 	@Column(name = "thanhtien")
 	private int thanhTien;
+
 	@Column(name = "tiencoc")
 	private int tienCoc;
+
 	@Column(name = "trangthai")
 	private int trangThai;
 
@@ -38,20 +49,21 @@ public class KhachSanBong {
 		this.maKhach_sanbong = maKhach_sanbong;
 	}
 
-	public int getMaNguoiDung() {
-		return maNguoiDung;
+
+	public NguoiDung getNguoiDung() {
+		return NguoiDung;
 	}
 
-	public void setMaNguoiDung(int maNguoiDung) {
-		this.maNguoiDung = maNguoiDung;
+	public void setNguoiDung(NguoiDung nguoiDung) {
+		NguoiDung = nguoiDung;
 	}
 
-	public int getMaSanBong() {
-		return maSanBong;
+	public SanBong getSanBong() {
+		return SanBong;
 	}
 
-	public void setMaSanBong(int maSanBong) {
-		this.maSanBong = maSanBong;
+	public void setSanBong(SanBong sanBong) {
+		SanBong = sanBong;
 	}
 
 	public String getThoiGian() {
@@ -88,9 +100,11 @@ public class KhachSanBong {
 
 	@Override
 	public String toString() {
-		return "KhachSanBong [maKhach_sanbong=" + maKhach_sanbong + ", maNguoiDung=" + maNguoiDung + ", maSanBong="
-				+ maSanBong + ", thoiGian=" + thoiGian + ", thanhTien=" + thanhTien + ", tienCoc=" + tienCoc
-				+ ", trangThai=" + trangThai + "]";
+		return "KhachSanBong [maKhach_sanbong=" + maKhach_sanbong + ", NguoiDung=" + NguoiDung + ", SanBong=" + SanBong
+				+ ", thoiGian=" + thoiGian + ", thanhTien=" + thanhTien + ", tienCoc=" + tienCoc + ", trangThai="
+				+ trangThai + "]";
 	}
+
+
 
 }

@@ -1,11 +1,6 @@
 package com.example.demo.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 import org.springframework.stereotype.Component;
 
@@ -19,26 +14,42 @@ public class SanBong {
 	private long maSanBong;
 	@Column(name = "tensanbong")
 	private String tenSanbong;
-	@Column(name = "maquan")
-	private int maQuan;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "maquan")
+	private Quan quan;
+
 	@Column(name = "diachi")
 	private String diaChi;
 	@Column(name = "giaca")
 	private int giaCa;
-	@Column(name = "magiatheogio")
-	private int maGiaTheoGio;
-	@Column(name = "manguoidung")
-	private int maNguoiDung;
+
+
+	@Column(name = "thoigianmo")
+	private String thoigianmo;
+
+	@Column(name = "thoigiandong")
+	private String thoigiandong;
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "manguoidung")
+	private NguoiDung nguoiDung;
+
 	@Column(name = "kinhdo")
 	private float kinhDo;
 	@Column(name = "vido")
 	private float viDo;
+
 	@Column(name = "anhsanbong")
 	private String anhSanBong;
 	@Column(name = "khuyenmai")
 	private float khuyenMai;
 	@Column(name = "trangthai")
 	private String trangThai;
+
+
+
+
 
 	public long getMaSanBong() {
 		return maSanBong;
@@ -56,12 +67,12 @@ public class SanBong {
 		this.tenSanbong = tenSanbong;
 	}
 
-	public int getMaQuan() {
-		return maQuan;
+	public Quan getQuan() {
+		return quan;
 	}
 
-	public void setMaQuan(int maQuan) {
-		this.maQuan = maQuan;
+	public void setQuan(Quan quan) {
+		this.quan = quan;
 	}
 
 	public String getDiaChi() {
@@ -80,20 +91,28 @@ public class SanBong {
 		this.giaCa = giaCa;
 	}
 
-	public int getMaGiaTheoGio() {
-		return maGiaTheoGio;
+	public String getThoigianmo() {
+		return thoigianmo;
 	}
 
-	public void setMaGiaTheoGio(int maGiaTheoGio) {
-		this.maGiaTheoGio = maGiaTheoGio;
+	public void setThoigianmo(String thoigianmo) {
+		this.thoigianmo = thoigianmo;
 	}
 
-	public int getMaNguoiDung() {
-		return maNguoiDung;
+	public String getThoigiandong() {
+		return thoigiandong;
 	}
 
-	public void setMaNguoiDung(int maNguoiDung) {
-		this.maNguoiDung = maNguoiDung;
+	public void setThoigiandong(String thoigiandong) {
+		this.thoigiandong = thoigiandong;
+	}
+
+	public NguoiDung getNguoiDung() {
+		return nguoiDung;
+	}
+
+	public void setNguoiDung(NguoiDung nguoiDung) {
+		this.nguoiDung = nguoiDung;
 	}
 
 	public float getKinhDo() {
@@ -135,13 +154,4 @@ public class SanBong {
 	public void setTrangThai(String trangThai) {
 		this.trangThai = trangThai;
 	}
-
-	@Override
-	public String toString() {
-		return "SanBong [maSanBong=" + maSanBong + ", tenSanbong=" + tenSanbong + ", maQuan=" + maQuan + ", diaChi="
-				+ diaChi + ", giaCa=" + giaCa + ", maGiaTheoGio=" + maGiaTheoGio + ", maNguoiDung=" + maNguoiDung
-				+ ", kinhDo=" + kinhDo + ", viDo=" + viDo + ", anhSanBong=" + anhSanBong + ", khuyenMai=" + khuyenMai
-				+ ", trangThai=" + trangThai + "]";
-	}
-
 }

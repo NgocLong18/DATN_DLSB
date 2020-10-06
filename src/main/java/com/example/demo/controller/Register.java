@@ -1,6 +1,7 @@
 package com.example.demo.controller;
 
 import com.example.demo.IRepository.INguoiDungRepository;
+import com.example.demo.IRepository.IVaiTroRepository;
 import com.example.demo.model.NguoiDung;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
