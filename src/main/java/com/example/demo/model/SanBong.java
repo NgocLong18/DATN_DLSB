@@ -24,13 +24,6 @@ public class SanBong {
 	@Column(name = "giaca")
 	private int giaCa;
 
-
-	@Column(name = "thoigianmo")
-	private String thoigianmo;
-
-	@Column(name = "thoigiandong")
-	private String thoigiandong;
-
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "manguoidung")
 	private NguoiDung nguoiDung;
@@ -89,22 +82,6 @@ public class SanBong {
 
 	public void setGiaCa(int giaCa) {
 		this.giaCa = giaCa;
-	}
-
-	public String getThoigianmo() {
-		return thoigianmo;
-	}
-
-	public void setThoigianmo(String thoigianmo) {
-		this.thoigianmo = thoigianmo;
-	}
-
-	public String getThoigiandong() {
-		return thoigiandong;
-	}
-
-	public void setThoigiandong(String thoigiandong) {
-		this.thoigiandong = thoigiandong;
 	}
 
 	public NguoiDung getNguoiDung() {

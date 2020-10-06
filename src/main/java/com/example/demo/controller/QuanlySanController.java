@@ -3,16 +3,15 @@ package com.example.demo.controller;
 import com.example.demo.IRepository.INguoiDungRepository;
 import com.example.demo.IRepository.ISanBongRepository;
 import com.example.demo.model.NguoiDung;
+import com.example.demo.model.SanBong;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class QuanlySanController {
@@ -43,7 +42,17 @@ public class QuanlySanController {
     }
 
     @GetMapping("/sanbong")
-    public String reddirectSanBong(){
+    public String reddirectSanBong(Model model){
+        model.addAttribute("listSanBong",sangbongService.findAll());
+        List<SanBong> list = sangbongService.findAll();
         return "quanly/sanbong";
+    }
+
+    @GetMapping("/chitiet/{maSanBong}")
+    public ModelAndView editStaffs(@PathVariable Long maSanBong){
+        Optional<SanBong> sanbong= sangbongService.findById(maSanBong);
+        ModelAndView modelAndView = new ModelAndView("/quanly/chitietsan");
+        modelAndView.addObject("sanbong", sanbong );
+        return modelAndView;
     }
 }

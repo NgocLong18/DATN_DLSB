@@ -1,10 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<h1>Thành công</h1>
+<header>
+    <ul>
+        <li>
+            <a href="/listSanbong">Sân quản lý</a>
+            <a href="/addSanbong">Thêm sân</a>
+            <a href="/thongke">Thống kê</a>
+        </li>
+    </ul>
+</header>
+<main>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Tên sân</th>
+            <th scope="col">Địa chỉ</th>
+            <th scope="col">Khuyến Mãi</th>
+            <th scope="col">Action</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <th:block th:each="sanbong : ${listSanBong}">
+            <tr>
+                <td>
+                    <p th:text="${sanbong.tenSanbong}"></p>
+                </td>
+                <td>
+                    <p th:text="${sanbong.giaCa}"></p>
+                </td>
+                <td>
+                    <p th:text="${sanbong.khuyenMai}"></p>
+                </td>
+                <td><a th:href="@{/chitiet/} + ${sanbong.maSanBong}">Chi tiết</a> </td>
+            </tr>
+        </th:block>
+        </tbody>
+    </table>
+</main>
 </body>
 </html>
