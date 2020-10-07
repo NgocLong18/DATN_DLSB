@@ -13,7 +13,7 @@ import java.util.Optional;
 public class NguoidungConntroller {
     @Autowired
     INguoiDungRepository serviceNguoiDung;
-    @GetMapping("/1/matkhau")
+    @GetMapping("/1/matkhau")//chuyển form đổi mật khẩu đang test thử vs 1 cái nhất định
     public ModelAndView editStaffs(){
         Optional<NguoiDung> nguoiDung= serviceNguoiDung.findById(new Long(1));
         System.out.println(nguoiDung.get().getEmail());
@@ -22,7 +22,7 @@ public class NguoidungConntroller {
         return modelAndView;
     }
 
-    @PostMapping("/1/matkhau")
+    @PostMapping("/1/matkhau")//thực hiện đổi mà đang lỗi chết mẹ
     public ModelAndView updateMatKhau(@ModelAttribute("nguoidung") NguoiDung nguoiDung,@RequestParam("matKhau") String matKhau) {
         ModelAndView modelAndView = new ModelAndView("/1/matkhau");
         if (!matKhau.equalsIgnoreCase(nguoiDung.getMatKhau())) {

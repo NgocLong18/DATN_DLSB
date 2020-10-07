@@ -20,14 +20,14 @@ public class QuanlySanController {
     @Autowired
     INguoiDungRepository nguoidungservice;
 
-    @GetMapping("/manager")
+    @GetMapping("/manager")//hiển thị form login dành cho quản lý
     public ModelAndView saveStaffs(Model model){
         ModelAndView modelAndView = new ModelAndView("quanly/loginformanager");
         modelAndView.addObject("nguoidung", new NguoiDung());
         return modelAndView;
     }
 
-    @PostMapping("/manager")
+    @PostMapping("/manager")// thực hiện action login
     public ModelAndView login(@ModelAttribute("nguoidung")NguoiDung nguoiDung, @RequestParam("email") String email, @RequestParam("matKhau") String matKhau) {
         List<NguoiDung> list = nguoidungservice.findAll();
         for (NguoiDung nguoiDung1 : list){
@@ -41,14 +41,14 @@ public class QuanlySanController {
         return modelAndView;
     }
 
-    @GetMapping("/sanbong")
+    @GetMapping("/sanbong")//hiển thị trang quản lý sân bóng
     public String reddirectSanBong(Model model){
         model.addAttribute("listSanBong",sangbongService.findAll());
         List<SanBong> list = sangbongService.findAll();
         return "quanly/sanbong";
     }
 
-    @GetMapping("/chitiet/{maSanBong}")
+    @GetMapping("/chitiet/{maSanBong}")//chi tiết sân bóng khi click vào link
     public ModelAndView editStaffs(@PathVariable Long maSanBong){
         Optional<SanBong> sanbong= sangbongService.findById(maSanBong);
         ModelAndView modelAndView = new ModelAndView("/quanly/chitietsan");

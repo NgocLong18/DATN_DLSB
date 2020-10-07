@@ -15,14 +15,14 @@ public class Login {
 	@Autowired
 	private INguoiDungRepository nguoidungservice;
 
-	@GetMapping("/login")
+	@GetMapping("/login")//mấy cái này chắc ko cần nói
 	public ModelAndView saveStaffs(Model model){
 		ModelAndView modelAndView = new ModelAndView("login");
 		modelAndView.addObject("nguoidung", new NguoiDung());
 		return modelAndView;
 	}
 
-	@PostMapping("/login")
+	@PostMapping("/login")//như trên
 	public ModelAndView login(@ModelAttribute("nguoidung")NguoiDung nguoiDung, @RequestParam("email") String email, @RequestParam("matKhau") String matKhau) {
 		List<NguoiDung> list = nguoidungservice.findAll();
 		System.out.println(list.get(0).getEmail());
