@@ -15,9 +15,9 @@ public class SanBong {
 	@Column(name = "tensanbong")
 	private String tenSanbong;
 
-	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "maquan")
-	private Quan quan;
+//	@ManyToOne(fetch = FetchType.EAGER)
+//	@JoinColumn(name = "maquan")
+//	private Quan quan;
 
 	@Column(name = "diachi")
 	private String diaChi;
@@ -40,8 +40,15 @@ public class SanBong {
 	@Column(name = "trangthai")
 	private String trangThai;
 
+	public SanBong(String tenSanbong, String diaChi, int giaCa, NguoiDung nguoiDung ) {
+			this.tenSanbong = tenSanbong;
+			this.diaChi = diaChi;
+			this.giaCa = giaCa;
+			this.nguoiDung= nguoiDung;
+	}
 
-
+	public SanBong() {
+	}
 
 
 	public long getMaSanBong() {
@@ -60,13 +67,13 @@ public class SanBong {
 		this.tenSanbong = tenSanbong;
 	}
 
-	public Quan getQuan() {
-		return quan;
-	}
-
-	public void setQuan(Quan quan) {
-		this.quan = quan;
-	}
+//	public Quan getQuan() {
+//		return quan;
+//	}
+//
+//	public void setQuan(Quan quan) {
+//		this.quan = quan;
+//	}
 
 	public String getDiaChi() {
 		return diaChi;
