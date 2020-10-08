@@ -15,13 +15,14 @@ import java.util.Optional;
 
 @Controller
 public class QuanlySanController {
+    int maQuanLy = 0;
     @Autowired
     ISanBongRepository sangbongService;
     @Autowired
     INguoiDungRepository nguoidungservice;
 
     @GetMapping("/manager")//hiển thị form login dành cho quản lý
-    public ModelAndView saveStaffs(Model model){
+    public ModelAndView loginformanager(Model model){
         ModelAndView modelAndView = new ModelAndView("loginformanager");
         modelAndView.addObject("nguoidung", new NguoiDung());
         return modelAndView;
@@ -33,6 +34,7 @@ public class QuanlySanController {
         for (NguoiDung nguoiDung1 : list){
             if(email.equalsIgnoreCase(nguoiDung1.getEmail()) && matKhau.equalsIgnoreCase(nguoiDung1.getMatKhau()) && nguoiDung1.getMaVaiTro().equalsIgnoreCase("2") ){
                 ModelAndView modelAndView = new ModelAndView("quanly/redirect" );
+                maQuanLy = (int) nguoiDung1.getMaNguoiDung();
                 return modelAndView ;
             }
         }
@@ -42,16 +44,23 @@ public class QuanlySanController {
     }
 
     @GetMapping("/sanbong")//hiển thị trang quản lý sân bóng
-    public String reddirectSanBong(Model model){
+    public ModelAndView reddirectSanBong(Model model){
+        if (maQuanLy == 0){
+            ModelAndView modelAndView = new ModelAndView("loginformanager");
+            modelAndView.addObject("nguoidung", new NguoiDung());
+            return modelAndView;
+        }
+        ModelAndView modelAndView = new ModelAndView("quanly/sanbong");
         model.addAttribute("listSanBong",sangbongService.findAll());
         List<SanBong> list = sangbongService.findAll();
-        return "quanly/sanbong";
+        return modelAndView;
     }
 
     @GetMapping("/chitiet/{maSanBong}")//chi tiết sân bóng khi click vào link
     public ModelAndView editStaffs(@PathVariable Long maSanBong){
         Optional<SanBong> sanbong= sangbongService.findById(maSanBong);
         ModelAndView modelAndView = new ModelAndView("/quanly/chitietsan");
+        System.out.println();
         modelAndView.addObject("sanbong", sanbong );
         return modelAndView;
     }
