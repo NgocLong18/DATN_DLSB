@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,7 +18,7 @@ import java.util.Optional;
 public class QuanlySanController {
     int maQuanLy = 0;
     @Autowired
-    ISanBongRepository sangbongService;
+    ISanBongRepository sanbongService;
     @Autowired
     INguoiDungRepository nguoidungservice;
 
@@ -38,27 +39,37 @@ public class QuanlySanController {
                 return modelAndView ;
             }
         }
-        ModelAndView modelAndView = new ModelAndView("quanly/loginformanager" );
+        ModelAndView modelAndView = new ModelAndView("loginformanager" );
         modelAndView.addObject("message", "Bạn không có quyền hạn truy cập");
         return modelAndView;
     }
 
     @GetMapping("/sanbong")//hiển thị trang quản lý sân bóng
     public ModelAndView reddirectSanBong(Model model){
-        if (maQuanLy == 0){
+        if (maQuanLy == 0) {
             ModelAndView modelAndView = new ModelAndView("loginformanager");
             modelAndView.addObject("nguoidung", new NguoiDung());
             return modelAndView;
         }
+        List<SanBong> sanbong = sanbongService.findAll();
+        List<SanBong> quanlysan = new ArrayList<SanBong>();
+        for(int i = 0; i < sanbong.size();i++){
+            if ((sanbong.get(i).getNguoiDung().getMaNguoiDung()+"").equalsIgnoreCase(maQuanLy+"")){
+                quanlysan.add(sanbong.get(i));
+                }
+        }
+//        System.out.println(quanlysan.get(0).getNguoiDung().getMaVaiTro());
         ModelAndView modelAndView = new ModelAndView("quanly/sanbong");
-        model.addAttribute("listSanBong",sangbongService.findAll());
-        List<SanBong> list = sangbongService.findAll();
+        model.addAttribute("listSanBong",quanlysan);
+        System.out.println(sanbong.get(0).getTenSanbong());
         return modelAndView;
+
+
     }
 
     @GetMapping("/chitiet/{maSanBong}")//chi tiết sân bóng khi click vào link
     public ModelAndView editStaffs(@PathVariable Long maSanBong){
-        Optional<SanBong> sanbong= sangbongService.findById(maSanBong);
+        Optional<SanBong> sanbong= sanbongService.findById(maSanBong);
         ModelAndView modelAndView = new ModelAndView("/quanly/chitietsan");
         System.out.println();
         modelAndView.addObject("sanbong", sanbong );
