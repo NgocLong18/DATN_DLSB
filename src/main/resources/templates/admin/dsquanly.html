@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+    <main>
+        <table class="table" style="text-align: center;">
+            <thead>
+            <tr>
+                <th>Tên người dùng</th>
+                <th>Số điện thoại</th>
+                <th>Số điện thoại 2</th>
+                <th>Địa chỉ</th>
+                <th>Action</th>
+                <th>ACtion</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each="quanly : ${listquanly}">
+                <tr>
+                    <td>
+                        <p th:text="${quanly.maNguoiDung}"></p>
+                    </td>
+                    <td>
+                        <p th:text="${quanly.email}"></p>
+                    </td>
+                    <td>
+                        <p th:text="${quanly.maVaiTro}"></p>
+                    </td>
+<!--                    <td><a th:href="@{/chitiet/} + ${sanbong.maSanBong}">Chi tiết</a> </td>-->
+                </tr>
+            </th:block>
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

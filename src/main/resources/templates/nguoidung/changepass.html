@@ -12,8 +12,8 @@
     <div class="container">
         <h3>Đổi mật khẩu</h3>
         <h4 class="mb-5">Để bảo mật tài khoản, vui lòng không chia sẻ mật khẩu cho người khác.</h4>
-        <form th:action="@{/1/matkhau}" th:object="${nguoidung}" method="POST">
-            <label>Depart Name</label>
+        <form th:action="@{/doimatkhau}" th:object="${nguoidung}" method="POST">
+            <label>Mật khẩu cũ</label>
             <input class="form-control" type="text" th:field="*{matKhau}">
             <th:block th:if="${message}">
                 <p th:text="${message}" style="color: red; font-size: medium" />
