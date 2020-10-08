@@ -22,7 +22,7 @@ public class QuanlySanController {
 
     @GetMapping("/manager")//hiển thị form login dành cho quản lý
     public ModelAndView saveStaffs(Model model){
-        ModelAndView modelAndView = new ModelAndView("quanly/loginformanager");
+        ModelAndView modelAndView = new ModelAndView("loginformanager");
         modelAndView.addObject("nguoidung", new NguoiDung());
         return modelAndView;
     }
@@ -55,4 +55,5 @@ public class QuanlySanController {
         modelAndView.addObject("sanbong", sanbong );
         return modelAndView;
     }
+
 }
