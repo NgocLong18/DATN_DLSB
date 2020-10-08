@@ -57,19 +57,21 @@ public class NguoidungConntroller {
     @PostMapping("/doimatkhau")//thực hiện đổi mà đang lỗi chết mẹ
     public ModelAndView updateMatKhau(@ModelAttribute("nguoidung") NguoiDung nguoiDung,@RequestParam("matKhau") String matKhau) {
         ModelAndView modelAndView = new ModelAndView("/doimatkhau");
-        if (!matKhau.equalsIgnoreCase(nguoiDung.getMatKhau())) {
-            modelAndView.addObject("message", "Sai mật khẩu");
-            ModelAndView modelAndView1 = new ModelAndView("/doimatkhau");
-        }
-//        else if(!XNMK.equalsIgnoreCase(MKM)){
-//            modelAndView.addObject("message1", "mât khẩu mới không khớp");
-//            ModelAndView modelAndView1 = new ModelAndView("nguoidung/changepass");
+//        if (!matKhau.equalsIgnoreCase(nguoiDung.getMatKhau())) {
+//            modelAndView.addObject("message", "Sai mật khẩu");
+//            ModelAndView modelAndView1 = new ModelAndView("/doimatkhau");
 //        }
-        else {
-            serviceNguoiDung.save(nguoiDung);
-            ModelAndView modelAndView1 = new ModelAndView("/doimatkhau");
-            modelAndView.addObject("message2", "Thay đổi thành công");
-        }
+////        else if(!XNMK.equalsIgnoreCase(MKM)){
+////            modelAndView.addObject("message1", "mât khẩu mới không khớp");
+////            ModelAndView modelAndView1 = new ModelAndView("nguoidung/changepass");
+////        }
+//        else {
+//            serviceNguoiDung.save(nguoiDung);
+//            ModelAndView modelAndView1 = new ModelAndView("/doimatkhau");
+//            modelAndView.addObject("message2", "Thay đổi thành công");
+//        }
+        serviceNguoiDung.save(nguoiDung);
+        modelAndView.addObject("message", "Thay đổi thành công");
         return modelAndView;
     }
 
