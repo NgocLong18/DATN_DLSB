@@ -58,10 +58,8 @@ public class QuanlySanController {
                 quanlysan.add(sanbong.get(i));
                 }
         }
-//        System.out.println(quanlysan.get(0).getNguoiDung().getMaVaiTro());
         ModelAndView modelAndView = new ModelAndView("quanly/sanbong");
-        model.addAttribute("listSanBong",quanlysan);
-        System.out.println(sanbong.get(0).getTenSanbong());
+        model.addAttribute("listSanBong",sanbong);
         return modelAndView;
 
 
