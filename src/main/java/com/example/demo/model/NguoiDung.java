@@ -27,6 +27,8 @@ public class NguoiDung {
 	private String anh;
 	@Column(name = "sodienthoai")
 	private String soDienThoai;
+	@Column(name = "sodienthoai1")
+	private String soDienThoai1;
 	@Column(name = "diachi")
 	private String diaChi;
 	@Column(name = "mavaitro")
@@ -37,6 +39,28 @@ public class NguoiDung {
 	public NguoiDung(String email, String matKhau, String maVaiTro, String trangThai ){
 		this.email = email;
 		this.matKhau = matKhau;
+		this.maVaiTro = maVaiTro;
+		this.trangThai = trangThai;
+	}
+
+	public NguoiDung(String email, String matKhau, String tenNguoiDung, String soDienThoai, String soDienThoai1, String diaChi, String maVaiTro, String trangThai){
+		this.email= email;
+		this.matKhau = matKhau;
+		this.tenNguoiDung= tenNguoiDung;
+		this.soDienThoai = soDienThoai;
+		this.soDienThoai1 = soDienThoai1;
+		this.diaChi = diaChi;
+		this.maVaiTro = maVaiTro;
+		this.trangThai = trangThai;
+	}
+	public NguoiDung(Long maNguoiDung, String email, String matKhau, String tenNguoiDung, String soDienThoai, String soDienThoai1, String diaChi, String maVaiTro, String trangThai){
+		this.maNguoiDung = maNguoiDung;
+		this.email= email;
+		this.matKhau = matKhau;
+		this.tenNguoiDung= tenNguoiDung;
+		this.soDienThoai = soDienThoai;
+		this.soDienThoai1 = soDienThoai1;
+		this.diaChi = diaChi;
 		this.maVaiTro = maVaiTro;
 		this.trangThai = trangThai;
 	}
@@ -116,5 +140,11 @@ public class NguoiDung {
 		this.trangThai = trangThai;
 	}
 
+	public String getSoDienThoai1() {
+		return soDienThoai1;
+	}
 
+	public void setSoDienThoai1(String soDienThoai1) {
+		this.soDienThoai1 = soDienThoai1;
+	}
 }
